@@ -108,6 +108,8 @@ X.pca = data.frame(pca.cervix$x[,1:5])
 
 ca_cervix = cervix$ca_cervix
 
+#### Find the best k for k-NN
+
 for(k in 1:10){
 
 model.knn.train <- knn(train=X.pca[train_ind,], test=X.pca[train_ind,], ca_cervix[train_ind], k=k)
@@ -124,8 +126,9 @@ plot(1:10, train.error1, col='red', type = 'b',ylim=c(0,0.15),xlab="Number of ne
 
 points(1:10, test.error1, col='blue', type = 'b')
 
-legend("topright",legend=c("traning error","test error"), col=c("red","blue"), pch=1)
+legend("topright",legend=c("traning error","test error"), col=c("red","blue"), pch=1) # Best k=5
 
+#### Using k=5 for k-NN
 test.pred.k5 = knn(train=X.pca[train_ind,], test=X.pca[-train_ind,], ca_cervix[train_ind], k=5,prob=T)
 
 plot(roc(ca_cervix[-train_ind], attributes(test.pred.k5)$prob),
