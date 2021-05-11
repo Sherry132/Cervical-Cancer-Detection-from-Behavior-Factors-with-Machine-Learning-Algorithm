@@ -10,6 +10,7 @@ The analytical plan for this study includes descriptive statistics in order to u
 http://archive.ics.uci.edu/ml/datasets/Cervical+Cancer+Behavior+Risk#
 
 ## R code
+### Import the dataset
 library(readr)
 
 cervix <- read_csv("/Users/Desktop/ML/sobar-72.csv")
